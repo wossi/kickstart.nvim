@@ -1,19 +1,28 @@
 return { -- Highlight, edit, and navigate code
-  'nvim-treesitter/nvim-treesitter',
-  build = ':TSUpdate',
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
   opts = {
     ensure_installed = {
-      'bash',
-      'c',
-      'diff',
-      'hcl',
-      'html',
-      'lua',
-      'luadoc',
-      'markdown',
-      'terraform',
-      'vim',
-      'vimdoc',
+      "bash",
+      "c",
+      "diff",
+      "hcl",
+      "html",
+      "lua",
+      "luadoc",
+      "markdown",
+      "terraform",
+      "vim",
+      "vimdoc",
+    },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "gnn",
+        node_incremental = "grn",
+        scope_incremental = "grc",
+        node_decremental = "grm",
+      },
     },
     -- Autoinstall languages that are not installed
     auto_install = true,
@@ -23,9 +32,9 @@ return { -- Highlight, edit, and navigate code
   config = function(_, opts)
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     -- Prefer git instead of curl in order to improve connectivity in some environments
-    require('nvim-treesitter.install').prefer_git = true
+    require("nvim-treesitter.install").prefer_git = true
     ---@diagnostic disable-next-line: missing-fields
-    require('nvim-treesitter.configs').setup(opts)
+    require("nvim-treesitter.configs").setup(opts)
 
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
