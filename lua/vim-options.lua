@@ -1,18 +1,27 @@
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
-vim.cmd("set expandtab")
-vim.cmd("set scrolloff=999")
-vim.cmd("set splitbelow")
-vim.cmd("set splitright")
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.scrolloff = 10
+
+vim.opt.wrap = false
+vim.opt.swapfile = false
+vim.opt.backup = false
+
+vim.opt.incsearch = true
+
+vim.opt.colorcolumn = "120"
+vim.opt.cursorline = true
+vim.opt.termguicolors = true
+
 vim.g.mapleader = " "
-
-vim.cmd("set number")
-vim.cmd("set relativenumber")
-
-vim.cmd("set colorcolumn=120")
-vim.cmd("set cursorline")
-vim.cmd("set termguicolors")
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
