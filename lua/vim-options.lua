@@ -23,6 +23,14 @@ vim.opt.termguicolors = true
 
 vim.g.mapleader = " "
 
+vim.keymap.set("i", "\"", "\"\"<left>")
+vim.keymap.set("i", "'", "''<left>")
+vim.keymap.set("i", "(", "()<left>")
+vim.keymap.set("i", "[", "[]<left>")
+vim.keymap.set("i", "{", "{}<left>")
+vim.keymap.set("i", "<", "<><left>")
+vim.keymap.set("n", "<ESC>", vim.cmd.nohl)
+
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
