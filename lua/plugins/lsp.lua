@@ -119,10 +119,10 @@ return {
           ["<C-n>"] = cmp.mapping.select_next_item(), -- Select the [n]ext item
           ["<C-p>"] = cmp.mapping.select_prev_item(), -- Select the [p]revious item
 
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4), -- Scroll the documentation window [b]ack / [f]orward
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),    -- Scroll the documentation window [b]ack / [f]orward
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           --["<C-y>"] = cmp.mapping.confirm({ select = true }),
-          ['<CR>'] = cmp.mapping.confirm { select = true },
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
           ["<C-Space>"] = cmp.mapping.complete({}), -- Manually trigger a completion from nvim-cmp.
           ["<C-l>"] = cmp.mapping(function()
             if luasnip.expand_or_locally_jumpable() then
@@ -144,6 +144,31 @@ return {
           { name = "luasnip" },
           { name = "path" },
         },
+      })
+    end,
+  },
+  {
+    "scalameta/nvim-metals",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    ft = { "scala", "sbt", "java" },
+    opts = function()
+      local metals_config = require("metals").bare_config()
+      metals_config.on_attach = function(client, bufnr)
+        -- your on_attach function
+      end
+
+      return metals_config
+    end,
+    config = function(self, metals_config)
+      local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = self.ft,
+        callback = function()
+          require("metals").initialize_or_attach(metals_config)
+        end,
+        group = nvim_metals_group,
       })
     end,
   },
