@@ -30,6 +30,12 @@ return {
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
       lspconfig.terraformls.setup({})
+      vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+        pattern = { "*.tf", "*.tfvars" },
+        callback = function()
+          vim.lsp.buf.format()
+        end,
+      })
       lspconfig.pyright.setup({})
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
@@ -87,6 +93,7 @@ return {
   { -- Autocompletion
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
+
     dependencies = {
       {
         "L3MON4D3/LuaSnip",
