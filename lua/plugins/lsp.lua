@@ -23,7 +23,7 @@ return {
       { "williamboman/mason.nvim", config = true },
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      { "j-hui/fidget.nvim",       opts = {} },
+      { "j-hui/fidget.nvim", opts = {} },
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
@@ -37,6 +37,23 @@ return {
         end,
       })
       lspconfig.pyright.setup({})
+      lspconfig.gopls.setup({
+        cmd = { "gopls" },
+        -- for postfix snippets and analyzers
+        -- capabilities = capabilities,
+        settings = {
+          gopls = {
+            experimentalPostfixCompletions = true,
+            analyses = {
+              unusedparams = true,
+              shadow = true,
+              fieldalignment = true,
+            },
+            staticcheck = true,
+          },
+        },
+        on_attach = on_attach,
+      })
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
         callback = function(event)
@@ -126,7 +143,7 @@ return {
           ["<C-n>"] = cmp.mapping.select_next_item(), -- Select the [n]ext item
           ["<C-p>"] = cmp.mapping.select_prev_item(), -- Select the [p]revious item
 
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),    -- Scroll the documentation window [b]ack / [f]orward
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4), -- Scroll the documentation window [b]ack / [f]orward
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           --["<C-y>"] = cmp.mapping.confirm({ select = true }),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),

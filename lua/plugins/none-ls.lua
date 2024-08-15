@@ -12,9 +12,10 @@ return {
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.black,
           null_ls.builtins.formatting.isort,
-          null_ls.builtins.formatting.terrafmt,
           null_ls.builtins.diagnostics.tfsec,
           null_ls.builtins.diagnostics.trivy,
+          null_ls.builtins.code_actions.gomodifytags,
+          null_ls.builtins.formatting.gofmt,
         },
       })
       vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, {})
