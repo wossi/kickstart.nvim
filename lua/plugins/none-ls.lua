@@ -15,7 +15,8 @@ return {
           null_ls.builtins.diagnostics.tfsec,
           null_ls.builtins.diagnostics.trivy,
           null_ls.builtins.code_actions.gomodifytags,
-          null_ls.builtins.formatting.gofmt,
+          null_ls.builtins.formatting.goimports_reviser,
+          null_ls.builtins.diagnostics.golangci_lint,
         },
       })
       vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format, {})
