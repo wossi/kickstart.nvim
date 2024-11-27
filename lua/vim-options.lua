@@ -23,12 +23,12 @@ vim.opt.termguicolors = true
 
 vim.g.mapleader = " "
 
-vim.keymap.set("i", "\"", "\"\"<left>")
-vim.keymap.set("i", "'", "''<left>")
-vim.keymap.set("i", "(", "()<left>")
-vim.keymap.set("i", "[", "[]<left>")
-vim.keymap.set("i", "{", "{}<left>")
-vim.keymap.set("i", "<", "<><left>")
+-- vim.keymap.set("i", "\"", "\"\"<left>")
+-- vim.keymap.set("i", "'", "''<left>")
+-- vim.keymap.set("i", "(", "()<left>")
+-- vim.keymap.set("i", "[", "[]<left>")
+-- vim.keymap.set("i", "{", "{}<left>")
+-- vim.keymap.set("i", "<", "<><left>")
 vim.keymap.set("n", "<ESC>", vim.cmd.nohl)
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
