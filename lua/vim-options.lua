@@ -43,3 +43,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+-- set up diagnostics
+vim.diagnostic.config({
+  virtual_lines = true
+})
