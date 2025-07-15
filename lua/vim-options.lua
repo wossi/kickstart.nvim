@@ -48,3 +48,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.diagnostic.config({
   virtual_lines = true
 })
+
+vim.lsp.set_log_level("off") -- log file is getting pretty huge...
