@@ -25,7 +25,7 @@ return {
       lspconfig.lua_ls.setup({})
       lspconfig.terraformls.setup({})
       vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-        pattern = { "*.tf", "*.tfvars" },
+        pattern = { "*.tf", "*.tfvars", "*.tofu" },
         callback = function()
           vim.lsp.buf.format()
         end,
