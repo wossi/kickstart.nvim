@@ -46,7 +46,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- set up diagnostics
 vim.diagnostic.config({
-  virtual_lines = true
+  virtual_lines = true,
+  virtual_text = false
 })
+vim.keymap.set('n', '<leader>td', function()
+  local new_config = not vim.diagnostic.config().virtual_lines
+  vim.diagnostic.config({ virtual_lines = new_config })
+end, { desc = 'Toggle diagnostic virtual_lines' })
 
 vim.lsp.set_log_level("off") -- log file is getting pretty huge...
