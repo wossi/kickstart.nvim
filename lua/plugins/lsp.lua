@@ -20,34 +20,46 @@ return {
       { "j-hui/fidget.nvim", opts = {} },
       "hrsh7th/cmp-nvim-lsp",
     },
+    opts = {
+      diagnostics = {
+        virtual_text = false
+      }
+    },
     config = function()
-      local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({})
-      lspconfig.terraformls.setup({})
+      -- local lspconfig = require("lspconfig")
+      -- local lspconfig = vim.lsp.config()
+      vim.lsp.enable("lua_ls")
+      vim.lsp.enable("terraformls")
+      vim.lsp.enable("terraform-ls")
+      vim.lsp.enable("tofu_ls")
+      -- lspconfig.terraformls.setup({
+      --   filetypes = {"tf", "terraform", "terraform-vars", "tfvars", "tofu"}
+      -- })
       vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         pattern = { "*.tf", "*.tfvars", "*.tofu" },
         callback = function()
           vim.lsp.buf.format()
         end,
       })
-      lspconfig.pyright.setup({})
-      lspconfig.gopls.setup({
-        cmd = { "gopls" },
-        -- for postfix snippets and analyzers
-        -- capabilities = capabilities,
-        settings = {
-          gopls = {
-            experimentalPostfixCompletions = true,
-            analyses = {
-              unusedparams = true,
-              shadow = true,
-              fieldalignment = true,
-            },
-            staticcheck = true,
-          },
-        },
-        on_attach = on_attach,
-      })
+      vim.lsp.enable("pyright")
+      vim.lsp.enable("gopls")
+      -- lspconfig.gopls.setup({
+      --   cmd = { "gopls" },
+      --   -- for postfix snippets and analyzers
+      --   -- capabilities = capabilities,
+      --   settings = {
+      --     gopls = {
+      --       experimentalPostfixCompletions = true,
+      --       analyses = {
+      --         unusedparams = true,
+      --         shadow = true,
+      --         fieldalignment = true,
+      --       },
+      --       staticcheck = true,
+      --     },
+      --   },
+      --   on_attach = on_attach,
+      -- })
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
         callback = function(event)

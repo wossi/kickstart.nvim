@@ -44,6 +44,9 @@ return {
         "vim",
         "vimdoc",
       },
+      languageRegister = {
+        hcl = {"tf", "terraform", "tofu"},
+      },
       incremental_selection = {
         enable = true,
         keymaps = {

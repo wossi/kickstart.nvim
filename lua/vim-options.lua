@@ -55,3 +55,9 @@ vim.keymap.set('n', '<leader>td', function()
 end, { desc = 'Toggle diagnostic virtual_lines' })
 
 vim.lsp.set_log_level("off") -- log file is getting pretty huge...
+
+vim.filetype.add({
+  extension = {
+    tofu = 'terraform'
+  },
+})
