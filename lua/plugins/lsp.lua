@@ -120,6 +120,7 @@ return {
     dependencies = {
       {
         "L3MON4D3/LuaSnip",
+        version = "v2.*",
         build = (function()
           if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
             return
