@@ -32,6 +32,7 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<ESC>", vim.cmd.nohl)
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<leader>ex", vim.cmd.Ex)
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
