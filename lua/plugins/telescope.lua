@@ -4,28 +4,30 @@ return {
     tag = "0.1.8",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      local telescope = require("telescope")
+      -- local telescope = require("telescope")
       local builtin = require("telescope.builtin")
-      telescope.setup({
-        defaults = {
-          vimgrep_arguments = {
-            "rg",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-            "--hidden",
-          },
-        },
-        pickers = {
-          find_files = {hidden = true}
-        }
-      })
+      -- telescope.setup({ -- find hidden files with grep-search
+      --   defaults = {
+      --     vimgrep_arguments = {
+      --       "rg",
+      --       "--color=never",
+      --       "--no-heading",
+      --       "--with-filename",
+      --       "--line-number",
+      --       "--column",
+      --       "--smart-case",
+      --       "--hidden",
+      --     },
+      --   },
+      --   pickers = {
+      --     find_files = {hidden = true}
+      --   }
+      -- })
       vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
       vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-      vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+      vim.keymap.set("n", "<leader>sf", function ()
+        builtin.find_files({ hidden = true })
+      end, { desc = "[S]earch [F]iles" })
       vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
       vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
       vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
